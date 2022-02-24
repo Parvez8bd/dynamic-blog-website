@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FontendController extends Controller
+class FrontendController extends Controller
 {
     public function home(){
 

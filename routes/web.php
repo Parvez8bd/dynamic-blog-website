@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\FontendController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [FontendController::class, 'home'])->name('home');
-Route::get('/about', [FontendController::class, 'about'])->name('about');
-Route::get('/admin', [FontendController::class, 'admin'])->name('admin');
+Route::get('/', [FrontendController::class, 'home'])->name('home');
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/admin', [FrontendController::class, 'admin'])->name('admin');
 
 
 

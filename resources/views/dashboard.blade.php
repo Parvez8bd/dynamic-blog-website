@@ -2,19 +2,11 @@
     <x-slot name="title">Dashboard</x-slot>
 
      <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
 
-        <x-responsive-nav-link :href="route('logout')"
-                onclick="event.preventDefault();
-                            this.closest('form').submit();">
-            {{ __('Log Out') }}
-        </x-responsive-nav-link>
-    </form>
 
     {{--<div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -29,15 +21,15 @@
         <div class="sidenav-header">
           <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
           <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-            <img src="./assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
+            <img src="{{asset('assets/img/small-logos/logo-asana.svg')}}" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold text-white">TechTouch</span>
           </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-white active bg-gradient-primary" href="./pages/dashboard.html">
+              <a class="nav-link text-white  " href="#">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">dashboard</i>
                 </div>
@@ -45,15 +37,15 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white " href="./pages/tables.html">
+              <a class="nav-link active bg-gradient-primary text-white " href="#">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">table_view</i>
                 </div>
-                <span class="nav-link-text ms-1">Tables</span>
+                <span class="nav-link-text ms-1">Post</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white " href="./pages/billing.html">
+              <a class="nav-link text-white " href="#">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">receipt_long</i>
                 </div>
@@ -61,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white " href="./pages/virtual-reality.html">
+              <a class="nav-link text-white " href="#">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                   <i class="material-icons opacity-10">view_in_ar</i>
                 </div>
@@ -95,27 +87,27 @@
                 <span class="nav-link-text ms-1">Profile</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white " href="./pages/sign-in.html">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="material-icons opacity-10">login</i>
-                </div>
-                <span class="nav-link-text ms-1">Sign In</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white " href="./pages/sign-up.html">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <i class="material-icons opacity-10">assignment</i>
-                </div>
-                <span class="nav-link-text ms-1">Sign Up</span>
-              </a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--              <a class="nav-link text-white " href="./pages/sign-in.html">--}}
+{{--                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">--}}
+{{--                  <i class="material-icons opacity-10">login</i>--}}
+{{--                </div>--}}
+{{--                <span class="nav-link-text ms-1">Sign In</span>--}}
+{{--              </a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--              <a class="nav-link text-white " href="./pages/sign-up.html">--}}
+{{--                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">--}}
+{{--                  <i class="material-icons opacity-10">assignment</i>--}}
+{{--                </div>--}}
+{{--                <span class="nav-link-text ms-1">Sign Up</span>--}}
+{{--              </a>--}}
+{{--            </li>--}}
           </ul>
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
           <div class="mx-3">
-            <a class="btn bg-gradient-primary mt-4 w-100" href="https://www.creative-tim.com/product/material-dashboard-pro?ref=sidebarfree" type="button">Upgrade to pro</a>
+            <a class="btn bg-gradient-primary mt-4 w-100" href="{{route('home')}}" type="button" target="_blank">Visit Website</a>
           </div>
         </div>
       </aside>
@@ -139,10 +131,14 @@
               </div>
               <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                  <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none">Sign In</span>
-                  </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                          <a href="{{ route('logout') }}" class="nav-link text-body font-weight-bold px-0" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                            <i class="fa fa-user me-sm-1"></i>
+                              <span class="d-sm-inline d-none">Log Out</span>
+                          </a>
+                    </form>
                 </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                   <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -167,7 +163,7 @@
                       <a class="dropdown-item border-radius-md" href="javascript:;">
                         <div class="d-flex py-1">
                           <div class="my-auto">
-                            <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                            <img src="{{asset('assets/img/team-2.jpg')}}" class="avatar avatar-sm  me-3 " alt="">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="text-sm font-weight-normal mb-1">
@@ -185,7 +181,7 @@
                       <a class="dropdown-item border-radius-md" href="javascript:;">
                         <div class="d-flex py-1">
                           <div class="my-auto">
-                            <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                            <img src="{{ asset('assets/img/small-logos/logo-spotify.svg')}}" class="avatar avatar-sm bg-gradient-dark  me-3 ">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="text-sm font-weight-normal mb-1">
@@ -313,7 +309,8 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                   <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                     <div class="chart">
-                      <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                      <canvas id="chart-bars" class="chart-canvas" height="170">
+                      </canvas>
                     </div>
                   </div>
                 </div>
@@ -821,4 +818,265 @@
           </div>
         </div>
       </div>
+
+    @push('script')
+
+        <script>
+            var ctx = document.getElementById("chart-bars").getContext("2d");
+
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["M", "T", "W", "T", "F", "S", "S"],
+                    datasets: [{
+                        label: "Sales",
+                        tension: 0.4,
+                        borderWidth: 0,
+                        borderRadius: 4,
+                        borderSkipped: false,
+                        backgroundColor: "rgba(255, 255, 255, .8)",
+                        data: [50, 20, 10, 22, 50, 10, 40],
+                        maxBarThickness: 6
+                    }, ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                drawBorder: false,
+                                display: true,
+                                drawOnChartArea: true,
+                                drawTicks: false,
+                                borderDash: [5, 5],
+                                color: 'rgba(255, 255, 255, .2)'
+                            },
+                            ticks: {
+                                suggestedMin: 0,
+                                suggestedMax: 500,
+                                beginAtZero: true,
+                                padding: 10,
+                                font: {
+                                    size: 14,
+                                    weight: 300,
+                                    family: "Roboto",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                                color: "#fff"
+                            },
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false,
+                                display: true,
+                                drawOnChartArea: true,
+                                drawTicks: false,
+                                borderDash: [5, 5],
+                                color: 'rgba(255, 255, 255, .2)'
+                            },
+                            ticks: {
+                                display: true,
+                                color: '#f8f9fa',
+                                padding: 10,
+                                font: {
+                                    size: 14,
+                                    weight: 300,
+                                    family: "Roboto",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                    },
+                },
+            });
+
+
+            var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+            new Chart(ctx2, {
+                type: "line",
+                data: {
+                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: "Mobile apps",
+                        tension: 0,
+                        borderWidth: 0,
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                        pointBorderColor: "transparent",
+                        borderColor: "rgba(255, 255, 255, .8)",
+                        borderColor: "rgba(255, 255, 255, .8)",
+                        borderWidth: 4,
+                        backgroundColor: "transparent",
+                        fill: true,
+                        data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+                        maxBarThickness: 6
+
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                drawBorder: false,
+                                display: true,
+                                drawOnChartArea: true,
+                                drawTicks: false,
+                                borderDash: [5, 5],
+                                color: 'rgba(255, 255, 255, .2)'
+                            },
+                            ticks: {
+                                display: true,
+                                color: '#f8f9fa',
+                                padding: 10,
+                                font: {
+                                    size: 14,
+                                    weight: 300,
+                                    family: "Roboto",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false,
+                                display: false,
+                                drawOnChartArea: false,
+                                drawTicks: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                display: true,
+                                color: '#f8f9fa',
+                                padding: 10,
+                                font: {
+                                    size: 14,
+                                    weight: 300,
+                                    family: "Roboto",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                    },
+                },
+            });
+
+            var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+
+            new Chart(ctx3, {
+                type: "line",
+                data: {
+                    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    datasets: [{
+                        label: "Mobile apps",
+                        tension: 0,
+                        borderWidth: 0,
+                        pointRadius: 5,
+                        pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                        pointBorderColor: "transparent",
+                        borderColor: "rgba(255, 255, 255, .8)",
+                        borderWidth: 4,
+                        backgroundColor: "transparent",
+                        fill: true,
+                        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                        maxBarThickness: 6
+
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                drawBorder: false,
+                                display: true,
+                                drawOnChartArea: true,
+                                drawTicks: false,
+                                borderDash: [5, 5],
+                                color: 'rgba(255, 255, 255, .2)'
+                            },
+                            ticks: {
+                                display: true,
+                                padding: 10,
+                                color: '#f8f9fa',
+                                font: {
+                                    size: 14,
+                                    weight: 300,
+                                    family: "Roboto",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false,
+                                display: false,
+                                drawOnChartArea: false,
+                                drawTicks: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                display: true,
+                                color: '#f8f9fa',
+                                padding: 10,
+                                font: {
+                                    size: 14,
+                                    weight: 300,
+                                    family: "Roboto",
+                                    style: 'normal',
+                                    lineHeight: 2
+                                },
+                            }
+                        },
+                    },
+                },
+            });
+        </script>
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            }
+        </script>
+
+    @endpush
 </x-app-layout>

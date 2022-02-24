@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ $title }} {{ ' | ' . config('app.name', 'Laravel') }}</title>
+        <link rel="icon" href="{{ asset('assets/img/small-logos/logo-asana.svg') }}" type="image/png" sizes="16x16">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -16,8 +17,8 @@
         <!-- style stack -->
         @stack('style')
 
-        
-        
+
+
     </head>
     <body>
         @include('website.head')
@@ -27,7 +28,7 @@
             </section>
         </div>
 
-        
+
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
